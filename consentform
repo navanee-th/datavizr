@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Participant Information Sheet & Consent Form</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <main class="max-w-3xl mx-auto p-6 sm:p-10">
+    <header class="mb-8">
+      <h1 class="text-3xl font-bold">Participant Information Sheet & Consent Form</h1>
+      <p class="text-sm text-gray-600 mt-2">Project: <span class="font-medium">Data visualization in Indian media: A study on the production strategies</span></p>
+    </header>
+
+    <!-- Information sheet -->
+    <section class="bg-white shadow-sm rounded-2xl p-6 mb-8 prose space-y-6">
+      <div>
+        <strong>1. Study title & researcher identity</strong><br/>
+        Title: Data visualization in Indian media: A study on the production strategies<br/>
+        Researcher: Navaneeth T M (PhD Researcher, Department of Journalism and Mass Communication, University of Calicut)
+      </div>
+      <div>
+        <strong>2. Purpose of the study</strong><br/>
+        To examine how Indian news portals and newspapers that regularly produce data visualizations organize and execute the production process.<br/>
+        To compare production workflows, tools and decision-making across organizations.<br/>
+        To understand how assumptions about audiences (needs, literacy, feedback and metrics) influence production choices.
+      </div>
+      <div>
+        <strong>3. Why you have been invited</strong><br/>
+        You are a professional who has worked as data journalist or data visualizer for an Indian news outlet in the past 3 years.
+      </div>
+      <div>
+        <strong>4. Voluntary participation & right to withdraw</strong><br/>
+        Participation is entirely voluntary. You may skip any question or stop the conversation at any time.<br/>
+        You may request withdrawal of your data up to 30 days after the interview (before aggregated analysis is finalised).
+      </div>
+      <div>
+        <strong>5. What taking part involves (procedures)</strong><br/>
+        Mode: Online interview via Zoom or Google Meet.<br/>
+        Expected duration: approximately 60–90 minutes.<br/>
+        Audio recording will be made for accuracy. You may ask to pause or stop the recording at any point during the interview if you wish to share information off the record or that you consider sensitive.<br/>
+        You may propose a convenient time slot; I will do my best to accommodate scheduling preferences.
+      </div>
+      <div>
+        <strong>6. What will happen to the recording and transcript</strong><br/>
+        Recordings are stored in a restricted, encrypted folder on a password-protected device. Access is limited to the researcher (and supervisor if required).<br/>
+        Transcription will be done manually. Any personal identifiers in transcripts will be redacted during cleaning.<br/>
+        Retention: recordings and identifiable data will be retained for 5 years after thesis/publication and then deleted or anonymized.
+      </div>
+      <div>
+        <strong>7. Anonymity & confidentiality</strong><br/>
+        Your anonymity will be preserved throughout. Codenames (e.g., P01, P02) will be used in notes and outputs unless you explicitly opt-in to be named.<br/>
+        Direct quotations may be lightly edited for clarity while preserving meaning.
+      </div>
+      <div>
+        <strong>8. How your data will be used</strong><br/>
+        For my PhD thesis at the University of Calicut, academic journal articles, and conference presentations.<br/>
+        Your data will not be used for commercial purposes or shared with third parties outside research aims.
+      </div>
+      <div>
+        <strong>9. Potential benefits and risks</strong><br/>
+        Risks are minimal: possible time burden and potential sensitivity when discussing internal newsroom practices.<br/>
+        Benefits may include reflecting on professional practice and receiving a short summary of initial findings if you wish.
+      </div>
+      <div>
+        <strong>10. Acknowledgement & small tokens</strong><br/>
+        With your permission, your name can be mentioned in the acknowledgements section of the thesis.<br/>
+        Optionally, a small book voucher may be offered as a token of appreciation; this is not contingent on participation or specific answers.
+      </div>
+      <div>
+        <strong>11. Compensation</strong><br/>
+        There is no payment for participation. Any optional token does not constitute compensation and is not linked to your responses.
+      </div>
+      <div>
+        <strong>12. Contact for questions or concerns</strong><br/>
+        Researcher: Navaneeth T M, Email: navaneethtm@uoc.ac.in, Phone: +91 623806249<br/>
+        Supervisor: Prof. Muhammadali N, Email: muhammadalin@gmail.com
+      </div>
+    </section>
+
+    <!-- Consent form -->
+    <section id="consent" class="bg-white shadow-sm rounded-2xl p-6">
+      <h2 class="text-xl font-semibold mb-4">Consent Form</h2>
+      <form id="consentForm" action="ACTION_URL" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1" for="fullName">Full name</label>
+            <input id="fullName" name="fullName" type="text" class="w-full rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="email">Email</label>
+            <input id="email" name="email" type="email" class="w-full rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500" />
+          </div>
+        </div>
+
+        <fieldset class="space-y-3">
+          <legend class="text-sm font-medium">Consent Statements (optional)</legend>
+          <label class="flex items-start gap-3"><input type="checkbox" id="cb_info"/> <span class="text-sm">I have read and understood the information provided above and have had the opportunity to ask questions.</span></label>
+          <label class="flex items-start gap-3"><input type="checkbox" id="cb_agree"/> <span class="text-sm">I agree to take part in this study.</span></label>
+          <label class="flex items-start gap-3"><input type="checkbox" id="cb_record"/> <span class="text-sm">I consent to audio recording of the interview for transcription and analysis.</span></label>
+          <label class="flex items-start gap-3"><input type="checkbox" id="cb_quote"/> <span class="text-sm">I consent to being quoted anonymously (using a pseudonym).</span></label>
+          <label class="flex items-start gap-3"><input type="checkbox" id="cb_withdraw"/> <span class="text-sm">I understand I can skip questions and may withdraw up to 30 days after the interview.</span></label>
+        </fieldset>
+
+        <fieldset class="space-y-3 mt-4">
+          <legend class="text-sm font-medium">Optional</legend>
+          <label class="flex items-start gap-3"><input type="checkbox" id="cb_ack"/> <span class="text-sm">I consent to being acknowledged by name in the thesis acknowledgements.</span></label>
+          <label class="flex items-start gap-3"><input type="checkbox" id="cb_summary"/> <span class="text-sm">I would like to receive a short summary of findings.</span></label>
+        </fieldset>
+
+        <div>
+          <label class="block text-sm font-medium mb-2">E‑signature</label>
+          <div class="rounded-2xl border border-dashed border-gray-300 bg-gray-50">
+            <canvas id="sigCanvas" class="w-full h-48 rounded-2xl bg-white"></canvas>
+          </div>
+          <div class="flex items-center gap-3 mt-2">
+            <button type="button" id="clearSig" class="px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-sm">Clear</button>
+            <span class="text-xs text-gray-500">Use mouse or touch to sign.</span>
+          </div>
+          <input type="hidden" name="signature_png" id="signaturePng" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-1" for="timestamp">Timestamp</label>
+            <input id="timestamp" name="timestamp" type="text" readonly class="w-full rounded-xl border-gray-200 bg-gray-100" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="timezone">Timezone</label>
+            <input id="timezone" name="timezone" type="text" readonly class="w-full rounded-xl border-gray-200 bg-gray-100" />
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+          <p class="text-xs text-gray-500">By clicking Submit, you certify that this e‑signature is yours and you agree to the statements above.</p>
+          <button type="submit" class="px-5 py-2.5 rounded-2xl bg-indigo-600 text-white">Submit</button>
+        </div>
+      </form>
+      <div id="toast" class="hidden fixed inset-x-0 top-4 mx-auto w-fit max-w-[90%] z-50">
+        <div class="rounded-xl bg-gray-900 text-white text-sm px-4 py-2">Your consent form is downloading now…</div>
+      </div>
+      <div id="successMsg" class="hidden mt-6 rounded-xl bg-green-50 text-green-800 p-4">Thank you. Your consent has been recorded. A PDF copy was downloaded to your device.</div>
+    </section>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('sigCanvas');
+    const signaturePad = new SignaturePad(canvas);
+    function resizeCanvas() {
+      const ratio = Math.max(window.devicePixelRatio || 1, 1);
+      const { width } = canvas.getBoundingClientRect();
+      const height = 192;
+      canvas.width = Math.floor(width * ratio);
+      canvas.height = Math.floor(height * ratio);
+      canvas.getContext('2d').scale(ratio, ratio);
+      signaturePad.clear();
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    document.getElementById('clearSig').addEventListener('click', () => signaturePad.clear());
+    document.getElementById('timezone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    function setTimestamp(){ document.getElementById('timestamp').value = new Date().toISOString(); }
+    setTimestamp();
+
+    const form = document.getElementById('consentForm');
+    const toast = document.getElementById('toast');
+    function showToast(){ toast.classList.remove('hidden'); setTimeout(()=>toast.classList.add('hidden'), 3000); }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if(signaturePad.isEmpty()){ alert('Please sign before submitting.'); return; }
+      setTimestamp();
+      const dataUrl = signaturePad.toDataURL('image/png');
+      document.getElementById('signaturePng').value = dataUrl;
+      try{
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({unit:'pt',format:'a4'});
+        let y=56;
+        doc.setFontSize(14);
+        doc.text('Participant Information Sheet & Consent Form',56,y); y+=20;
+        doc.setFontSize(10);
+        doc.text(document.querySelector('main').innerText,56,y,{maxWidth:480});
+        y+=200;
+        doc.addImage(dataUrl,'PNG',56,y,200,80);
+        y+=100;
+        // Add researcher signature from repo file
+        const researcherImg = new Image();
+        researcherImg.src = '2021-11-10_14-29-removebg-preview.png';
+        researcherImg.onload = function(){
+          doc.addImage(researcherImg,'PNG',56,y,200,80);
+          doc.save(`Consent_${new Date().toISOString().replace(/[:.]/g,'-')}.pdf`);
+        };
+        showToast();
+      }catch(err){console.error(err);}
+      document.getElementById('successMsg').classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
