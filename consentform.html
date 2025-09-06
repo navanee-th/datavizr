@@ -409,7 +409,20 @@
         showToast();
         const safeName = (document.getElementById('fullName').value.trim() || 'Participant').replace(/\s+/g,'_');
         const filename = `Consent_${safeName}_${new Date().toISOString().replace(/[:.]/g,'-')}.pdf`;
-        doc.save(filename);
+        // Download to participant
+doc.save(filename);
+
+// ALSO upload same PDF to backend
+const pdfBytes = doc.output("blob");
+const fd = new FormData();
+fd.append("file", pdfBytes, filename);
+
+// send to Vercel backend
+fetch("https://consents-pvt-41xn.vercel.app/api/consent-to-github", {
+  method: "POST",
+  body: fd
+}).then(r => r.json()).then(console.log).catch(console.error);
+
       }catch(err){
         console.error('PDF generation error:', err);
         alert('Your consent was submitted, but we could not generate the PDF automatically.');
