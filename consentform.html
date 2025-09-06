@@ -4,98 +4,120 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Participant Information Sheet & Consent Form</title>
+  <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Signature Pad -->
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
+  <!-- jsPDF -->
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-900">
   <main class="max-w-3xl mx-auto p-6 sm:p-10">
     <header class="mb-8">
       <h1 class="text-3xl font-bold">Participant Information Sheet & Consent Form</h1>
-      <p class="text-sm text-gray-600 mt-2">Project: <span class="font-medium">Data visualization in Indian media: A study on the production strategies</span></p>
+      <p class="text-sm text-gray-600 mt-2">
+        Project: <span class="font-medium">Data visualization in Indian media: A study on the production strategies</span>
+      </p>
     </header>
 
     <!-- Information sheet -->
-    <section class="bg-white shadow-sm rounded-2xl p-6 mb-8 prose space-y-6">
-      <div>
-        <strong>1. Study title & researcher identity</strong><br/>
-        Title: Data visualization in Indian media: A study on the production strategies<br/>
-        Researcher: Navaneeth T M (PhD Researcher, Department of Journalism and Mass Communication, University of Calicut)
-      </div>
-      <div>
-        <strong>2. Purpose of the study</strong><br/>
-        To examine how Indian news portals and newspapers that regularly produce data visualizations organize and execute the production process.<br/>
-        To compare production workflows, tools and decision-making across organizations.<br/>
-        To understand how assumptions about audiences (needs, literacy, feedback and metrics) influence production choices.
-      </div>
-      <div>
-        <strong>3. Why you have been invited</strong><br/>
-        You are a professional who has worked as data journalist or data visualizer for an Indian news outlet in the past 3 years.
-      </div>
-      <div>
-        <strong>4. Voluntary participation & right to withdraw</strong><br/>
-        Participation is entirely voluntary. You may skip any question or stop the conversation at any time.<br/>
-        You may request withdrawal of your data up to 30 days after the interview (before aggregated analysis is finalised).
-      </div>
-      <div>
-        <strong>5. What taking part involves (procedures)</strong><br/>
-        Mode: Online interview via Zoom or Google Meet.<br/>
-        Expected duration: approximately 60–90 minutes.<br/>
-        Audio recording will be made for accuracy. You may ask to pause or stop the recording at any point during the interview if you wish to share information off the record or that you consider sensitive.<br/>
-        You may propose a convenient time slot; I will do my best to accommodate scheduling preferences.
-      </div>
-      <div>
-        <strong>6. What will happen to the recording and transcript</strong><br/>
-        Recordings are stored in a restricted, encrypted folder on a password-protected device. Access is limited to the researcher (and supervisor if required).<br/>
-        Transcription will be done manually. Any personal identifiers in transcripts will be redacted during cleaning.<br/>
-        Retention: recordings and identifiable data will be retained for 5 years after thesis/publication and then deleted or anonymized.
-      </div>
-      <div>
-        <strong>7. Anonymity & confidentiality</strong><br/>
-        Your anonymity will be preserved throughout. Codenames (e.g., P01, P02) will be used in notes and outputs unless you explicitly opt-in to be named.<br/>
-        Direct quotations may be lightly edited for clarity while preserving meaning.
-      </div>
-      <div>
-        <strong>8. How your data will be used</strong><br/>
-        For my PhD thesis at the University of Calicut, academic journal articles, and conference presentations.<br/>
-        Your data will not be used for commercial purposes or shared with third parties outside research aims.
-      </div>
-      <div>
-        <strong>9. Potential benefits and risks</strong><br/>
-        Risks are minimal: possible time burden and potential sensitivity when discussing internal newsroom practices.<br/>
-        Benefits may include reflecting on professional practice and receiving a short summary of initial findings if you wish.
-      </div>
-      <div>
-        <strong>10. Acknowledgement & small tokens</strong><br/>
-        With your permission, your name can be mentioned in the acknowledgements section of the thesis.<br/>
-        Optionally, a small book voucher may be offered as a token of appreciation; this is not contingent on participation or specific answers.
-      </div>
-      <div>
-        <strong>11. Compensation</strong><br/>
-        There is no payment for participation. Any optional token does not constitute compensation and is not linked to your responses.
-      </div>
-      <div>
-        <strong>12. Contact for questions or concerns</strong><br/>
-        Researcher: Navaneeth T M, Email: navaneethtm@uoc.ac.in, Phone: +91 623806249<br/>
-        Supervisor: Prof. Muhammadali N, Email: muhammadalin@gmail.com
-      </div>
+    <section id="info-sheet" class="bg-white shadow-sm rounded-2xl p-6 mb-8 prose">
+      <!-- use space-y-6 so every block has a clear blank line between them -->
+      <ol class="list-decimal pl-6 space-y-6">
+        <li class="mb-6">
+          <strong>1. Study title & researcher identity</strong><br/>
+          <span class="block">Title: Data visualization in Indian media: A study on the production strategies</span>
+          <span class="block">Researcher: Navaneeth T M (PhD Researcher, Department of Journalism and Mass Communication, University of Calicut)</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>2. Purpose of the study</strong><br/>
+          <span class="block">To examine how Indian news portals and newspapers that regularly produce data visualizations organize and execute the production process.</span>
+          <span class="block">To compare production workflows, tools and decision-making across organizations.</span>
+          <span class="block">To understand how assumptions about audiences (needs, literacy, feedback and metrics) influence production choices.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>3. Why you have been invited</strong><br/>
+          <span class="block">You are a professional who has worked as data journalist or data visualizer for an Indian news outlet in the past 3 years.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>4. Voluntary participation & right to withdraw</strong><br/>
+          <span class="block">Participation is entirely voluntary. You may skip any question or stop the conversation at any time.</span>
+          <span class="block">You may request withdrawal of your data up to 30 days after the interview (before aggregated analysis is finalised).</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>5. What taking part involves (procedures)</strong><br/>
+          <span class="block"><em>Mode:</em> Online interview via Zoom or Google Meet.</span>
+          <span class="block"><em>Expected duration:</em> approximately 60–90 minutes.</span>
+          <span class="block">Audio recording will be made for accuracy. You may ask to pause or stop the recording at any point during the interview if you wish to share information off the record or that you consider sensitive.</span>
+          <span class="block">You may propose a convenient time slot; I will do my best to accommodate scheduling preferences.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>6. What will happen to the recording and transcript</strong><br/>
+          <span class="block">Recordings are stored in a restricted, encrypted folder on a password-protected device. Access is limited to the researcher (and supervisor if required).</span>
+          <span class="block">Transcription will be done manually. Any personal identifiers in transcripts will be redacted during cleaning.</span>
+          <span class="block"><em>Retention:</em> recordings and identifiable data will be retained for 5 years after thesis/publication and then deleted or anonymized.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>7. Anonymity & confidentiality</strong><br/>
+          <span class="block">Your anonymity will be preserved throughout. Codenames (e.g., P01, P02) will be used in notes and outputs unless you explicitly opt-in to be named.</span>
+          <span class="block">Direct quotations may be lightly edited for clarity while preserving meaning.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>8. How your data will be used</strong><br/>
+          <span class="block">For my PhD thesis at the University of Calicut, academic journal articles, and conference presentations.</span>
+          <span class="block">Your data will not be used for commercial purposes or shared with third parties outside research aims.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>9. Potential benefits and risks</strong><br/>
+          <span class="block">Risks are minimal: possible time burden and potential sensitivity when discussing internal newsroom practices.</span>
+          <span class="block">Benefits may include reflecting on professional practice and receiving a short summary of initial findings if you wish.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>10. Acknowledgement & small tokens</strong><br/>
+          <span class="block">With your permission, your name can be mentioned in the acknowledgements section of the thesis.</span>
+          <span class="block">Optionally, a small book voucher may be offered as a token of appreciation; this is not contingent on participation or specific answers.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>11. Compensation</strong><br/>
+          <span class="block">There is no payment for participation. Any optional token does not constitute compensation and is not linked to your responses.</span>
+        </li>
+
+        <li class="mb-6">
+          <strong>12. Contact for questions or concerns</strong><br/>
+          <span class="block">Researcher: Navaneeth T M, Email: <a href="mailto:navaneethtm@uoc.ac.in">navaneethtm@uoc.ac.in</a>, Phone: +91 623806249</span>
+          <span class="block">Supervisor: Prof. Muhammadali N, Email: <a href="mailto:muhammadalin@gmail.com">muhammadalin@gmail.com</a></span>
+        </li>
+      </ol>
     </section>
 
     <!-- Consent form -->
     <section id="consent" class="bg-white shadow-sm rounded-2xl p-6">
       <h2 class="text-xl font-semibold mb-4">Consent Form</h2>
+
+      <!-- Replace ACTION_URL with your endpoint (Formspree/Basin/Getform/Apps Script) -->
       <form id="consentForm" action="ACTION_URL" method="POST" enctype="multipart/form-data" class="space-y-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm font-medium mb-1" for="fullName">Full name</label>
-            <input id="fullName" name="fullName" type="text" class="w-full rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500" />
+            <label class="block text-sm font-medium mb-1" for="fullName">Participant full name <span class="text-red-500">*</span></label>
+            <input id="fullName" name="fullName" type="text" required class="w-full rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500" />
           </div>
           <div>
-            <label class="block text-sm font-medium mb-1" for="email">Email</label>
-            <input id="email" name="email" type="email" class="w-full rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500" />
+            <label class="block text-sm font-medium mb-1" for="email">Email <span class="text-red-500">*</span></label>
+            <input id="email" name="email" type="email" required class="w-full rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500" />
           </div>
         </div>
 
+        <!-- Consent statements (all optional now) -->
         <fieldset class="space-y-3">
           <legend class="text-sm font-medium">Consent Statements (optional)</legend>
           <label class="flex items-start gap-3"><input type="checkbox" id="cb_info"/> <span class="text-sm">I have read and understood the information provided above and have had the opportunity to ask questions.</span></label>
@@ -105,14 +127,22 @@
           <label class="flex items-start gap-3"><input type="checkbox" id="cb_withdraw"/> <span class="text-sm">I understand I can skip questions and may withdraw up to 30 days after the interview.</span></label>
         </fieldset>
 
-        <fieldset class="space-y-3 mt-4">
-          <legend class="text-sm font-medium">Optional</legend>
+        <!-- Optional choices -->
+        <fieldset class="space-y-3">
+          <legend class="text-sm font-medium">Optional choices</legend>
           <label class="flex items-start gap-3"><input type="checkbox" id="cb_ack"/> <span class="text-sm">I consent to being acknowledged by name in the thesis acknowledgements.</span></label>
           <label class="flex items-start gap-3"><input type="checkbox" id="cb_summary"/> <span class="text-sm">I would like to receive a short summary of findings.</span></label>
         </fieldset>
 
+        <!-- Notes -->
         <div>
-          <label class="block text-sm font-medium mb-2">E‑signature</label>
+          <label class="block text-sm font-medium mb-1" for="notes">Restrictions / preferences (optional)</label>
+          <textarea id="notes" name="notes" rows="3" class="w-full rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500" placeholder="e.g., Do not attribute quotes; anonymize organization; no video recording, etc."></textarea>
+        </div>
+
+        <!-- Signature -->
+        <div>
+          <label class="block text-sm font-medium mb-2">E-signature <span class="text-red-500">*</span></label>
           <div class="rounded-2xl border border-dashed border-gray-300 bg-gray-50">
             <canvas id="sigCanvas" class="w-full h-48 rounded-2xl bg-white"></canvas>
           </div>
@@ -120,35 +150,42 @@
             <button type="button" id="clearSig" class="px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-sm">Clear</button>
             <span class="text-xs text-gray-500">Use mouse or touch to sign.</span>
           </div>
-          <input type="hidden" name="signature_png" id="signaturePng" />
+          <input type="hidden" name="signature_png" id="signaturePng" required />
         </div>
 
+        <!-- Metadata -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-sm font-medium mb-1" for="timestamp">Timestamp</label>
-            <input id="timestamp" name="timestamp" type="text" readonly class="w-full rounded-xl border-gray-200 bg-gray-100" />
+            <label class="block text-sm font-medium mb-1" for="timestamp">Timestamp (ISO-8601)</label>
+            <input id="timestamp" name="timestamp" type="text" readonly class="w-full rounded-xl border-gray-200 bg-gray-100 text-gray-700" />
           </div>
           <div>
             <label class="block text-sm font-medium mb-1" for="timezone">Timezone</label>
-            <input id="timezone" name="timezone" type="text" readonly class="w-full rounded-xl border-gray-200 bg-gray-100" />
+            <input id="timezone" name="timezone" type="text" readonly class="w-full rounded-xl border-gray-200 bg-gray-100 text-gray-700" />
           </div>
         </div>
 
         <div class="flex items-center justify-between pt-2">
-          <p class="text-xs text-gray-500">By clicking Submit, you certify that this e‑signature is yours and you agree to the statements above.</p>
+          <p class="text-xs text-gray-500">By clicking Submit, you certify that this e-signature is yours.</p>
           <button type="submit" class="px-5 py-2.5 rounded-2xl bg-indigo-600 text-white">Submit</button>
         </div>
       </form>
+
+      <!-- Toast + Success -->
       <div id="toast" class="hidden fixed inset-x-0 top-4 mx-auto w-fit max-w-[90%] z-50">
         <div class="rounded-xl bg-gray-900 text-white text-sm px-4 py-2">Your consent form is downloading now…</div>
       </div>
-      <div id="successMsg" class="hidden mt-6 rounded-xl bg-green-50 text-green-800 p-4">Thank you. Your consent has been recorded. A PDF copy was downloaded to your device.</div>
+      <div id="successMsg" class="hidden mt-6 rounded-xl bg-green-50 text-green-800 p-4">
+        Thank you. Your consent has been recorded. A PDF copy was downloaded to your device.
+      </div>
     </section>
   </main>
 
   <script>
+    // Signature pad
     const canvas = document.getElementById('sigCanvas');
-    const signaturePad = new SignaturePad(canvas);
+    const signaturePad = new SignaturePad(canvas, { minWidth: 0.8, maxWidth: 2.2 });
+
     function resizeCanvas() {
       const ratio = Math.max(window.devicePixelRatio || 1, 1);
       const { width } = canvas.getBoundingClientRect();
@@ -161,41 +198,183 @@
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
     document.getElementById('clearSig').addEventListener('click', () => signaturePad.clear());
-    document.getElementById('timezone').value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    // Metadata
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+    document.getElementById('timezone').value = tz;
     function setTimestamp(){ document.getElementById('timestamp').value = new Date().toISOString(); }
     setTimestamp();
 
-    const form = document.getElementById('consentForm');
+    // Toast
     const toast = document.getElementById('toast');
-    function showToast(){ toast.classList.remove('hidden'); setTimeout(()=>toast.classList.add('hidden'), 3000); }
+    function showToast(msg='Your consent form is downloading now…'){
+      toast.querySelector('div').textContent = msg;
+      toast.classList.remove('hidden');
+      setTimeout(()=>toast.classList.add('hidden'), 3200);
+    }
 
+    // Preload researcher's signature from repo
+    const researcherSigPath = '2021-11-10_14-29-removebg-preview.png'; // must exist in same repo
+    let researcherSigDataUrl = null;
+    async function preloadResearcherSig(){
+      try{
+        const res = await fetch(researcherSigPath, { cache: 'reload' });
+        if(!res.ok) return;
+        const blob = await res.blob();
+        researcherSigDataUrl = await new Promise((resolve, reject)=>{
+          const fr = new FileReader();
+          fr.onload = () => resolve(fr.result);
+          fr.onerror = reject;
+          fr.readAsDataURL(blob);
+        });
+      }catch(e){ console.warn('Could not load researcher signature:', e); }
+    }
+    preloadResearcherSig();
+
+    function ensureSpace(doc, y, margin){
+      const pageHeight = doc.internal.pageSize.getHeight();
+      if (y > pageHeight - margin - 40) { doc.addPage(); return margin; }
+      return y;
+    }
+
+    // Build clean Info Sheet text for PDF (from the info section only)
+    function getInfoText(){
+      return document.getElementById('info-sheet').innerText;
+    }
+
+    // Form submit
+    const form = document.getElementById('consentForm');
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      if(signaturePad.isEmpty()){ alert('Please sign before submitting.'); return; }
+      if (signaturePad.isEmpty()) { alert('Please sign before submitting.'); return; }
+
+      // Timestamp & signatures
       setTimestamp();
-      const dataUrl = signaturePad.toDataURL('image/png');
-      document.getElementById('signaturePng').value = dataUrl;
+      const participantSigDataUrl = signaturePad.toDataURL('image/png');
+      document.getElementById('signaturePng').value = participantSigDataUrl;
+
       try{
         const { jsPDF } = window.jspdf;
-        const doc = new jsPDF({unit:'pt',format:'a4'});
-        let y=56;
-        doc.setFontSize(14);
-        doc.text('Participant Information Sheet & Consent Form',56,y); y+=20;
-        doc.setFontSize(10);
-        doc.text(document.querySelector('main').innerText,56,y,{maxWidth:480});
-        y+=200;
-        doc.addImage(dataUrl,'PNG',56,y,200,80);
-        y+=100;
-        // Add researcher signature from repo file
-        const researcherImg = new Image();
-        researcherImg.src = '2021-11-10_14-29-removebg-preview.png';
-        researcherImg.onload = function(){
-          doc.addImage(researcherImg,'PNG',56,y,200,80);
-          doc.save(`Consent_${new Date().toISOString().replace(/[:.]/g,'-')}.pdf`);
-        };
+        const doc = new jsPDF({ unit:'pt', format:'a4' });
+        const margin = 56;
+        const pageWidth = doc.internal.pageSize.getWidth();
+        let y = margin;
+
+        // Header
+        doc.setFont('helvetica','bold'); doc.setFontSize(16);
+        doc.text('Participant Information Sheet & Consent Form', margin, y); y += 22;
+        doc.setFont('helvetica','normal'); doc.setFontSize(11);
+
+        // Participant metadata
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const ts = document.getElementById('timestamp').value;
+        const tzVal = document.getElementById('timezone').value;
+        ;[
+          `Participant: ${fullName}`,
+          `Email: ${email}`,
+          `Timestamp: ${ts}`,
+          `Timezone: ${tzVal}`
+        ].forEach(line => { doc.text(line, margin, y); y += 16; });
+        y += 6;
+
+        // Info sheet body
+        doc.setFont('helvetica','bold'); doc.text('Information Sheet', margin, y); y += 14;
+        doc.setFont('helvetica','normal');
+        const infoLines = doc.splitTextToSize(getInfoText(), pageWidth - margin*2);
+        infoLines.forEach(line => { y = ensureSpace(doc, y, margin); doc.text(line, margin, y); y += 14; });
+        y += 8;
+
+        // Consent statements (optional)
+        doc.setFont('helvetica','bold'); doc.text('Consent statements (participant may leave unticked):', margin, y); y += 14;
+        doc.setFont('helvetica','normal');
+        const statements = [
+          ['I have read and understood the information provided above and have had the opportunity to ask questions.', document.getElementById('cb_info').checked],
+          ['I agree to take part in this study.', document.getElementById('cb_agree').checked],
+          ['I consent to audio recording of the interview for transcription and analysis.', document.getElementById('cb_record').checked],
+          ['I consent to being quoted anonymously (using a pseudonym).', document.getElementById('cb_quote').checked],
+          ['I understand I can skip questions and may withdraw up to 30 days after the interview.', document.getElementById('cb_withdraw').checked],
+        ];
+        const maxWidth = pageWidth - margin*2 - 18;
+        statements.forEach(([text, checked]) => {
+          y = ensureSpace(doc, y, margin);
+          const boxY = y - 8;
+          doc.rect(margin, boxY, 10, 10);
+          if (checked) { doc.line(margin, boxY, margin+10, boxY+10); doc.line(margin+10, boxY, margin, boxY+10); }
+          const textLines = doc.splitTextToSize(text, maxWidth);
+          doc.text(textLines, margin+18, y);
+          y += 14*textLines.length + 8;
+        });
+
+        // Optional choices
+        y += 6;
+        doc.setFont('helvetica','bold'); doc.text('Optional choices:', margin, y); y += 14;
+        doc.setFont('helvetica','normal');
+        const optionals = [
+          ['I consent to being acknowledged by name in the thesis acknowledgements.', document.getElementById('cb_ack').checked],
+          ['I would like to receive a short summary of findings.', document.getElementById('cb_summary').checked],
+        ];
+        optionals.forEach(([text, checked]) => {
+          y = ensureSpace(doc, y, margin);
+          const boxY = y - 8;
+          doc.rect(margin, boxY, 10, 10);
+          if (checked) { doc.line(margin, boxY, margin+10, boxY+10); doc.line(margin+10, boxY, margin, boxY+10); }
+          const textLines = doc.splitTextToSize(text, maxWidth);
+          doc.text(textLines, margin+18, y);
+          y += 14*textLines.length + 8;
+        });
+
+        // Notes
+        const notes = document.getElementById('notes').value.trim();
+        if (notes) {
+          y += 8;
+          doc.setFont('helvetica','bold'); doc.text('Restrictions / preferences (participant-provided):', margin, y); y += 14;
+          doc.setFont('helvetica','normal');
+          const noteLines = doc.splitTextToSize(notes, pageWidth - margin*2);
+          noteLines.forEach(line => { y = ensureSpace(doc, y, margin); doc.text(line, margin, y); y += 14; });
+        }
+
+        // Signatures
+        y += 10;
+        doc.setFont('helvetica','bold'); doc.text('Signatures', margin, y); y += 14;
+
+        // Participant signature
+        doc.setFont('helvetica','normal'); doc.text('Participant signature:', margin, y); y += 6;
+        y = ensureSpace(doc, y, margin);
+        doc.addImage(participantSigDataUrl, 'PNG', margin, y, 220, 80);
+        y += 90;
+        doc.text('Participant printed name: ' + (fullName || ''), margin, y);
+        y += 18;
+
+        // Researcher signature (from repo PNG)
+        doc.text('Researcher signature:', margin, y); y += 6;
+        if (researcherSigDataUrl) {
+          y = ensureSpace(doc, y, margin);
+          doc.addImage(researcherSigDataUrl, 'PNG', margin, y, 180, 60);
+          y += 70;
+        }
+        doc.text('Researcher printed name: Navaneeth T M', margin, y); y += 18;
+
+        // Download
         showToast();
-      }catch(err){console.error(err);}
-      document.getElementById('successMsg').classList.remove('hidden');
+        const filename = `Consent_${(fullName||'Participant').replace(/\s+/g,'_')}_${new Date().toISOString().replace(/[:.]/g,'-')}.pdf`;
+        doc.save(filename);
+      }catch(err){
+        console.error('PDF generation error:', err);
+        alert('Your consent was submitted, but we could not generate the PDF automatically.');
+      }
+
+      // (Optional) Post to your backend endpoint for storage
+      try{
+        const fd = new FormData(form);
+        const res = await fetch(form.action, { method:'POST', body: fd });
+        if(res.ok){
+          form.reset(); signaturePad.clear();
+          document.getElementById('successMsg').classList.remove('hidden');
+        }
+      }catch(e2){
+        console.warn('Submission endpoint error:', e2);
+      }
     });
   </script>
 </body>
