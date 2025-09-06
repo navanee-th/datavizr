@@ -144,7 +144,7 @@
 
         <!-- Consent statements (all optional) -->
         <fieldset class="space-y-3">
-          <legend class="text-sm font-medium">Consent Statements (optional)</legend>
+          <legend class="text-sm font-medium">Consent Statements </legend>
           <label class="flex items-start gap-3"><input type="checkbox" id="cb_info"/> <span class="text-sm">I have read and understood the information provided above and have had the opportunity to ask questions.</span></label>
           <label class="flex items-start gap-3"><input type="checkbox" id="cb_agree"/> <span class="text-sm">I agree to take part in this study.</span></label>
           <label class="flex items-start gap-3"><input type="checkbox" id="cb_record"/> <span class="text-sm">I consent to audio recording of the interview for transcription and analysis.</span></label>
@@ -336,13 +336,13 @@
         y += 12;
 
         // Consent statements (optional)
-        doc.setFont('helvetica','bold'); doc.text('Consent statements (participant may leave unticked):', margin, y); y += 14;
+        doc.setFont('helvetica','bold'); doc.text('Consent statements:', margin, y); y += 14;
         doc.setFont('helvetica','normal');
         const statements = [
           ['I have read and understood the information provided above and have had the opportunity to ask questions.', document.getElementById('cb_info').checked],
           ['I agree to take part in this study.', document.getElementById('cb_agree').checked],
           ['I consent to audio recording of the interview for transcription and analysis.', document.getElementById('cb_record').checked],
-          ['I consent to being quoted anonymously (using a pseudonym).', document.getElementById('cb_quote').checked],
+          ['I consent to being quoted anonymously (using a codenames).', document.getElementById('cb_quote').checked],
           ['I understand I can skip questions and may withdraw up to 30 days after the interview.', document.getElementById('cb_withdraw').checked],
         ];
         const checkMaxWidth = pageWidth - margin * 2 - 18;
