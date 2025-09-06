@@ -22,13 +22,13 @@
 
     <!-- Information sheet -->
     <section id="info-sheet" class="bg-white shadow-sm rounded-2xl p-6 mb-8 prose">
-      <!-- Numbers only once: <ol> gives the numbering; headings no longer include "1.", "2.", etc. -->
+      <!-- Numbers only once from <ol>; bullets per sentence -->
       <ol class="list-decimal pl-6 space-y-6">
         <li class="space-y-2">
           <h3 class="font-semibold" data-heading>Study title & researcher identity</h3>
           <ul class="list-disc pl-5 space-y-1">
             <li>Title: Data visualization in Indian media: A study on the production strategies.</li>
-            <li>Researcher: Navaneeth T M (PhD Researcher, Department of Journalism and Mass Communication, University of Calicut).</li>
+            <li class="emph">Researcher: <strong>Navaneeth T M</strong> (PhD Researcher, Department of Journalism and Mass Communication, University of Calicut).</li>
           </ul>
         </li>
 
@@ -51,8 +51,8 @@
         <li class="space-y-2">
           <h3 class="font-semibold" data-heading>Voluntary participation & right to withdraw</h3>
           <ul class="list-disc pl-5 space-y-1">
-            <li>Participation is entirely voluntary; you may skip any question or stop the conversation at any time.</li>
-            <li>You may request withdrawal of your data up to 30 days after the interview (before aggregated analysis is finalised).</li>
+            <li class="emph"><strong>Participation is entirely voluntary; you may skip any question or stop the conversation at any time.</strong></li>
+            <li class="emph"><strong>You may request withdrawal of your data up to 30 days after the interview (before aggregated analysis is finalised).</strong></li>
           </ul>
         </li>
 
@@ -61,7 +61,7 @@
           <ul class="list-disc pl-5 space-y-1">
             <li>Mode: Online interview via Zoom or Google Meet.</li>
             <li>Expected duration: approximately 60–90 minutes.</li>
-            <li>Audio recording will be made for accuracy; you may ask to pause or stop the recording at any point if you wish to share information off the record or that you consider sensitive.</li>
+            <li class="emph"><strong>Audio recording will be made for accuracy; you may ask to pause or stop the recording at any point if you wish to share information off the record or that you consider sensitive.</strong></li>
             <li>You may propose a convenient time slot; I will do my best to accommodate scheduling preferences.</li>
           </ul>
         </li>
@@ -70,7 +70,8 @@
           <h3 class="font-semibold" data-heading>What will happen to the recording and transcript</h3>
           <ul class="list-disc pl-5 space-y-1">
             <li>Recordings are stored in a restricted, encrypted folder on a password-protected device; access is limited to the researcher (and supervisor if required).</li>
-            <li>Transcription will be done manually; any personal identifiers in transcripts will be redacted during cleaning.</li>
+            <li>Transcription will be done manually.</li>
+            <li class="emph"><strong>Any personal identifiers in transcripts will be redacted during cleaning.</strong></li>
             <li>Retention: recordings and identifiable data will be retained for 5 years after thesis/publication and then deleted or anonymized.</li>
           </ul>
         </li>
@@ -261,13 +262,16 @@
       return y;
     }
 
-    // Build structured info for the PDF (ensures spacing + bullets + correct numbering only once)
+    // Build structured info for the PDF (captures which bullets are emphasized)
     function getStructuredInfoSections(){
       const ol = document.querySelector('#info-sheet ol');
       const items = Array.from(ol.children || []);
       return items.map((li, idx) => {
         const heading = (li.querySelector('[data-heading]')?.textContent || '').trim();
-        const bullets = Array.from(li.querySelectorAll('ul > li')).map(n => n.textContent.trim());
+        const bullets = Array.from(li.querySelectorAll('ul > li')).map(n => ({
+          text: n.textContent.trim(),
+          emph: n.classList.contains('emph')
+        }));
         return { num: idx + 1, heading, bullets };
       });
     }
@@ -307,22 +311,21 @@
         ].forEach(line => { doc.text(line, margin, y); y += 16; });
         y += 6;
 
-        // Information Sheet (structured with clear gaps)
+        // Information Sheet (with gaps and bold bullets)
         const sections = getStructuredInfoSections();
         sections.forEach(({ num, heading, bullets }, i) => {
-          // Add a blank line gap before each section title except the first
-          if (i !== 0) { y += 10; }
+          if (i !== 0) { y += 10; }                 // blank line before next section
           y = ensureSpace(doc, y, margin);
           doc.setFont('helvetica','bold');
           doc.text(`${num}. ${heading}`, margin, y);
-          y += 16; // gap between heading and first bullet (your requested blank line)
+          y += 16;                                  // blank line between heading and first bullet
 
-          doc.setFont('helvetica','normal');
           const maxWidth = pageWidth - margin * 2;
-          bullets.forEach((b) => {
-            const lines = doc.splitTextToSize(`• ${b}`, maxWidth);
+          bullets.forEach(({ text, emph }) => {
+            const lines = doc.splitTextToSize(`• ${text}`, maxWidth);
             lines.forEach(line => {
               y = ensureSpace(doc, y, margin);
+              doc.setFont('helvetica', emph ? 'bold' : 'normal');
               doc.text(line, margin, y);
               y += 14;
             });
